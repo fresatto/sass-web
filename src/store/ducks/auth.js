@@ -1,37 +1,34 @@
-export const Types = {
-	SIGN_IN_REQUEST: 'auth/SIGN_IN_REQUEST',
-	SIGN_IN_SUCCESS: 'auth/SIGN_IN_SUCCESS',
-}
+import { createReducer, createActions } from 'reduxsauce'
+import Immutable from 'seamless-immutable'
 
-const INITIAL_STATE = {
+/* Types & Action Creators */
+
+export const { Types, Creators } = createActions({
+	signInRequest: ['email', 'password'],
+	signInSuccess: ['username'],
+	signInFailure: ['error'],
+})
+
+export const AuthTypes = Types
+
+/* Initial State */
+
+export const INITIAL_STATE = Immutable({
 	signedIn: false,
 	token: null,
 	loading: false,
-}
+})
 
-export default function auth(state = INITIAL_STATE, action) {
-	switch (action.type) {
-		case Types.SIGN_IN_REQUEST:
-			return { ...state, loading: true }
-		case Types.SIGN_IN_SUCCESS:
-			return { ...state, loading: false, ...action.payload.token }
-		default:
-			return state
-	}
-}
+/* Reducers */
 
-export const Creators = {
-	signInRequest: (email, password) => ({
-		type: Types.SIGN_IN_REQUEST,
-		payload: {
-			email,
-			password,
-		},
-	}),
-	signInSuccess: token => ({
-		type: Types.SIGN_IN_SUCCESS,
-		payload: {
-			token,
-		},
-	}),
-}
+export const signInRequest = state => state.merge({ loading: true })
+export const signInSuccess = state => state.merge({ loading: false })
+export const signInFailure = state => state.merge({ loading: false })
+
+/* Reducers to types */
+
+export const reducer = createReducer(INITIAL_STATE, {
+	[Types.SIGN_IN_REQUEST]: signInRequest,
+	[Types.SIGN_IN_SUCCESS]: signInSuccess,
+	[Types.SIGN_IN_FAILURE]: signInFailure,
+})

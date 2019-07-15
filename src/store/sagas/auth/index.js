@@ -17,6 +17,7 @@ export function* signInRequestSaga(action) {
 
 		yield put(AuthActions.signInSuccess(data.token))
 	} catch (error) {
+		yield put(AuthActions.signInFailure(''))
 		yield put(
 			toastrActions.add({
 				title: 'Erro ao acessar',

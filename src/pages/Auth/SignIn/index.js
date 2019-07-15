@@ -39,6 +39,7 @@ class SignIn extends Component {
 
 	render() {
 		const { email, password } = this.state
+		const { loadingAuth } = this.props
 		return (
 			<Container>
 				<Form onSubmit={this.handleSubmitForm}>
@@ -62,7 +63,7 @@ class SignIn extends Component {
 						onChange={this.onChange}
 					/>
 					<Button size="default" color="default" type="submit">
-						Entrar
+						{loadingAuth ? 'Carregando...' : 'Entrar'}
 					</Button>
 				</Form>
 			</Container>
