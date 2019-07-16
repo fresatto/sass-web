@@ -23,6 +23,7 @@ export function* signInRequestSaga(action) {
 				title: 'Erro ao acessar',
 				message: 'Verifique o e-mail ou a senha e tente novamente',
 				type: 'error',
+				attention: true,
 			})
 		)
 	}

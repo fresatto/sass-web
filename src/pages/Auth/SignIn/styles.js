@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from 'styled-components'
 
 export const Container = styled.div`
 	display: flex;
@@ -6,7 +6,7 @@ export const Container = styled.div`
 	justify-content: center;
 	height: 100%;
 	background: #1a1b1e;
-`;
+`
 
 export const Title = styled.h1`
 	color: #ccc;
@@ -14,7 +14,7 @@ export const Title = styled.h1`
 	font-weight: 100;
 	text-align: center;
 	margin-bottom: 1rem;
-`;
+`
 
 export const Form = styled.form`
 	background: #353940;
@@ -41,5 +41,8 @@ export const Form = styled.form`
 		margin-bottom: 0.5rem;
 		border-radius: 3px;
 		outline: 0;
+		background: #2b2d32;
+		color: #ccc;
+		border: 1px solid #1a1b1e;
 	}
-`;
+`

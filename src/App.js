@@ -13,7 +13,15 @@ const App = () => (
 		<Fragment>
 			<GlobalStyle />
 			<Routes />
-			<ReduxToastr />
+			<ReduxToastr
+				timeOut={4000}
+				preventDuplicates
+				position="top-left"
+				transitionIn="fadeIn"
+				transitionOut="fadeOut"
+				progressBar
+				closeOnToastrClick
+			/>
 		</Fragment>
 	</Provider>
 )
