@@ -1,7 +1,13 @@
-import React from 'react';
+import React, { Component } from 'react'
+import TeamSwitcher from '../../components/TeamSwitcher'
+import { Container } from './styles'
 
-// import { Container } from './styles';
-
-const Main = () => <div />;
-
-export default Main;
+export default class Main extends Component {
+	render() {
+		return (
+			<Container>
+				<TeamSwitcher />
+			</Container>
+		)
+	}
+}

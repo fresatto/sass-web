@@ -1,21 +1,26 @@
 import { call, put } from 'redux-saga/effects'
-import api from '../../../services/api.js'
+import { push } from 'connected-react-router'
+// Utils
+import api from '../../services/api.js'
 
 // Alert toast
 import { actions as toastrActions } from 'react-redux-toastr'
 
 // Creators
-import { Creators as AuthActions } from '../../ducks/auth'
+import { Creators as AuthActions } from '../ducks/auth'
 
 export function* signInRequestSaga(action) {
 	try {
+		const { email, password } = action
 		const { data } = yield call(api.post, '/session', {
-			...action.payload,
+			email,
+			password,
 		})
 
-		localStorage.setItem('@Omni:token')
+		localStorage.setItem('@Omni:token', data.token)
 
 		yield put(AuthActions.signInSuccess(data.token))
+		yield put(push('/'))
 	} catch (error) {
 		yield put(AuthActions.signInFailure(''))
 		yield put(

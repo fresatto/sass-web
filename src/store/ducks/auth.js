@@ -14,15 +14,16 @@ export const AuthTypes = Types
 /* Initial State */
 
 export const INITIAL_STATE = Immutable({
-	signedIn: false,
-	token: null,
+	signedIn: !!localStorage.getItem('@Omni:token'),
+	token: localStorage.getItem('@Omni:token') || null,
 	loading: false,
 })
 
 /* Reducers */
 
 export const signInRequest = state => state.merge({ loading: true })
-export const signInSuccess = state => state.merge({ loading: false })
+export const signInSuccess = state =>
+	state.merge({ loading: false, signedIn: true })
 export const signInFailure = state => state.merge({ loading: false })
 
 /* Reducers to types */

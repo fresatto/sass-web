@@ -1,5 +1,5 @@
 /* eslint-disable no-tabs */
-import { createGlobalStyle } from 'styled-components';
+import { createGlobalStyle } from 'styled-components'
 
 export default createGlobalStyle`
 	@import url('https://fonts.googleapis.com/css?family+Source+Sans+Pro');
@@ -25,6 +25,7 @@ export default createGlobalStyle`
 	}
 
 	button {
+		outline: 0;
 		cursor: pointer;
 	}
-`;
+`
